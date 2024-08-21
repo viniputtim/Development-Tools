@@ -16,12 +16,12 @@ if not os.path.exists(output_folder):
     os.makedirs(output_folder)
 
 if 'raylib' in libraries:
-	flags += '-lraylib -lGL -lm -lpthread -ldl -lrt -lX11'
+    flags += '-lraylib -lGL -lm -lpthread -ldl -lrt -lX11'
 
 for root, folders, files in os.walk(file_folder):
-	for file in files:
-		if file.endswith('.c') or file.endswith('.cpp'):
-			cpp_files.append(os.path.join(root, file))
+    for file in files:
+        if file.endswith('.c') or file.endswith('.cpp'):
+            cpp_files.append(os.path.join(root, file))
 
 cmd = f'g++ -o {executable} {" ".join(cpp_files)} {flags}'
 
