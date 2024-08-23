@@ -23,7 +23,7 @@ for root, folders, files in os.walk(file_folder):
         if file.endswith('.c') or file.endswith('.cpp'):
             cpp_files.append(os.path.join(root, file))
 
-cmd = f'g++ -o {executable} {" ".join(cpp_files)} {flags}'
+cmd = f'g++ -o {executable} -I "include" {" ".join(cpp_files)} {flags}'
 
 os.system(cmd)
 os.system(executable)
