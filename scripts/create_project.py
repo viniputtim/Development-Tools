@@ -25,16 +25,19 @@ def create_project_structure(project_name):
     }
 
 
-    def create_structure(base_path, structure):
+    def create_structure(base_path, structure): 
         for key, value in structure.items():
             path = os.path.join(base_path, key)
+
             if not os.path.exists(path):
                 os.makedirs(path)
+
             if isinstance(value, dict):
                 create_structure(path, value)
             elif isinstance(value, list):
                 for item in value:
                     file_path = os.path.join(path, item)
+
                     if not os.path.exists(file_path):
                         if item.endswith('.png'):
                             download_raylib_logo(file_path)
@@ -46,6 +49,7 @@ def create_project_structure(project_name):
     def download_raylib_logo(file_path):
         url = 'https://upload.wikimedia.org/wikipedia/commons/f/f4/Raylib_logo.png'
         response = requests.get(url)
+
         if response.status_code == 200:
             with open(file_path, 'wb') as f:
                 f.write(response.content)
